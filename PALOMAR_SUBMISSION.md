@@ -93,15 +93,19 @@ The independent post-build checks confirmed:
   three permitted axioms and NanoDa enabled; and
 - `formalization.yaml` passed the current official v0.4 schema again on 2026-09-21.
 
-The protected Palomar verification was not simulated and is not claimed here. This host has no
-installed Comparator, `lean4export`, NanoDa, or Landrun binaries, no Rust or Go toolchain with
-which to build them, and neither WSL nor Docker. Comparator documents a fake-Landrun development
-mode for non-Linux systems, but that would not reproduce Palomar's Linux Landlock boundary. The
-official predictive preflight requires a public GitHub repository and an immutable full commit
-SHA. This repository includes a manually dispatched preflight pinned to an immutable revision of
-Palomar's reusable workflow. Its protected Comparator/NanoDa/Landrun run and the clean Linux CI
-run will be reviewed against the public commit before submission. They remain submission
-prerequisites, not failures of the local Lean verification.
+The protected Palomar verification was not simulated locally and is not claimed here. This host
+has no installed Comparator, `lean4export`, NanoDa, or Landrun binaries, no Rust or Go toolchain
+with which to build them, and neither WSL nor Docker. Comparator documents a fake-Landrun
+development mode for non-Linux systems, but that would not reproduce Palomar's Linux Landlock
+boundary.
+
+After publication, the clean GitHub-hosted Linux build passed both on the initial push and in the
+[manually dispatched Task 8 run](https://github.com/jenkins-byu/nonnegativity-cutoffs-lean/actions/runs/35776538664).
+That run also successfully resolved Palomar's approved execution profile, but its protected
+verification job could not start because the selected Namespace-managed runner was unavailable
+to the calling repository. The predictive preflight is therefore not claimed. It is advisory
+rather than a registry submission; the authoritative protected Comparator/NanoDa/Landrun checks
+remain to be performed by Palomar's submission verification.
 
 ## Submission-readiness audit
 
@@ -131,5 +135,7 @@ requirements. It confirmed:
   commit revisions.
 
 Task 6 supplied the final local verification described above. Task 7 published the initial source
-snapshot. The protected Palomar Comparator/NanoDa/Landrun run and clean Linux CI run remain to be
-reviewed before the final submission commit is frozen.
+snapshot. Task 8 confirmed the clean public Linux build and attempted the predictive Palomar
+preflight; the profile stage passed, but the protected verification job could not obtain its
+external runner. The authoritative Palomar Comparator/NanoDa/Landrun checks therefore remain for
+submission verification.
