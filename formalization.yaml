@@ -1,0 +1,127 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+
+version: "v0.4"
+
+project:
+  name: "Nonnegativity cutoffs for level-one modular forms"
+  description: >-
+    A Lean formalization of the qualitative well-definedness of the nonnegativity
+    Sturm bound A(k) for real level-one modular forms. For every weight k at least
+    12 and divisible by four, the formalization proves that a finite initial segment
+    detects coefficientwise nonnegativity and that its optimal endpoint is attained
+    as the greatest possible first negative Fourier-coefficient index.
+  authors:
+    - "Paul Jenkins"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Paul Jenkins"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11F11", "11F30"]
+
+sources:
+  - title: "Modular Forms with Only Nonnegative Coefficients"
+    authors:
+      - "Paul Jenkins"
+      - "Jeremy Rouse"
+    id: "doi:10.1007/s40993-026-00744-z"
+    type: "paper"
+    location: "Section 4, Theorem 5"
+    relationship: "formalizes"
+    note: >-
+      The formalization covers the qualitative well-definedness argument in
+      Section 4. Paul Jenkins participated as the formalization author; no claim
+      is made here that Jeremy Rouse reviewed or endorsed the Lean development.
+      Development began against arXiv:2507.17949v3, whose relevant Section 4 is
+      substantively unchanged in the published version.
+    license: "CC-BY-4.0"
+    author_endorsement: "other"
+
+related_formalizations: []
+
+status:
+  scope: >-
+    The full development formalizes the qualitative level-one argument that the
+    nonnegative normalized forms form a bounded finite intersection of coefficient
+    half-spaces, and derives a finite coefficient test and the well-definedness of
+    A(k). The single Palomar declaration records the consequence for arbitrary
+    level-one modular forms with real Fourier coefficients when k is at least 12
+    and divisible by four: an inclusive finite nonnegativity cutoff exists, is
+    attained as a first negative index, and bounds every such first negative index.
+    The advertised declaration does not include the low weights 4 and 8, numerical
+    values of A(k), the explicit bounds in Sections 5 and 6, or higher-level analogues.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+  main_results:
+    - declaration: "NonnegativeModularForms.exists_optimal_nonnegativity_cutoff"
+      file: "Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex (underlying model identifier not recorded)"]
+      framework: "OpenAI Codex desktop app"
+      tool_setup: >-
+        Substantial AI-assisted Lean development, API investigation, proof repair,
+        documentation, and build auditing under human mathematical direction.
+      cost:
+        wall_time: "not tracked; developed across multiple interactive sessions"
+        spend_usd: "subscription-based; not tracked"
+        hardware: "local Windows machine"
+      prompting_notes: >-
+        The work was divided into eleven task-sized stages covering API audit, sign
+        change, real-form infrastructure, finite half-spaces, coefficient growth,
+        finite determination, A(k), and final integration. Each stage was requested
+        and reviewed interactively by the human maintainer.
+    - method: "manual"
+      framework: "n/a"
+      tool_setup: >-
+        Paul Jenkins selected the mathematical scope, made the source-alignment and
+        publication decisions, and completed the final semantic review of the
+        advertised statement.
+  spend_usd: "subscription-based; not tracked"
+  notes: >-
+    OpenAI Codex generated and revised substantial portions of the Lean code and
+    documentation. It is disclosed as automation and is not listed as an author.
+
+fidelity:
+  divergences: >-
+    The Palomar headline is a streamlined consequence of Section 4 rather than the
+    full convex-polytope formulation of Theorem 5. It is restricted to k >= 12 with
+    k divisible by four, makes the real-coefficient condition explicit, includes
+    the constant coefficient in the arbitrary-form cutoff test, and combines finite
+    detection with the maximum characterization of A(k). The low-weight conventions
+    A(4) = A(8) = 1 and all quantitative claims are omitted from the headline.
+
+review:
+  status: "author-verified"
+  reviewers: []
+  notes: >-
+    The underlying Lean development has passed repeated clean builds and axiom
+    audits. The author has completed a focused semantic audit of the Palomar
+    Challenge statement and confirmed that it expresses the intended theorem.
+    The formalization has not received external mathematical review.
+
+alignment:
+  namespace: "NonnegativeModularForms"
+  statements:
+    - source: "Section 4, Theorem 5 and the definition of A(k) in the introduction"
+      lean: "NonnegativeModularForms.exists_optimal_nonnegativity_cutoff"
+      module: "Solution"
+      status: "adapted"
+      note: >-
+        The Lean declaration states the qualitative well-definedness consequence:
+        a positive finite cutoff exists and is the greatest attainable first
+        negative index. The full production development separately proves the
+        bounded finite convex-polytope and finite-determination statements.
+
+acknowledgements: >-
+  The formalization uses Mathlib's modular-form, q-expansion, finite-dimensional
+  linear algebra, convexity, topology, and L-series libraries. The Palomar starter
+  repository and the formalization.yaml standard guided the submission packaging.
+  OpenAI Codex provided substantial disclosed automation.

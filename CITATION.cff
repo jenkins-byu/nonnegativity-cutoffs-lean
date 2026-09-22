@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: >-
+  If you use this formalization, please cite the Lean project and the published
+  mathematical source.
+title: "Nonnegativity cutoffs for level-one modular forms in Lean"
+type: software
+authors:
+  - family-names: "Jenkins"
+    given-names: "Paul"
+version: 0.1.0
+license: Apache-2.0
+repository-code: "https://github.com/jenkins-byu/nonnegativity-cutoffs-lean"
+url: "https://github.com/jenkins-byu/nonnegativity-cutoffs-lean"
+abstract: >-
+  A Lean formalization of the qualitative well-definedness of the nonnegativity
+  Sturm bound A(k) for real level-one modular forms, including finite detection
+  and the greatest-first-negative-index characterization for weights at least 12
+  divisible by four.
+keywords:
+  - Lean
+  - modular forms
+  - Fourier coefficients
+  - nonnegativity
+  - Sturm bound
+references:
+  - type: article
+    title: "Modular Forms with Only Nonnegative Coefficients"
+    authors:
+      - family-names: "Jenkins"
+        given-names: "Paul"
+      - family-names: "Rouse"
+        given-names: "Jeremy"
+    doi: "10.1007/s40993-026-00744-z"
+    url: "https://doi.org/10.1007/s40993-026-00744-z"
+    year: 2026

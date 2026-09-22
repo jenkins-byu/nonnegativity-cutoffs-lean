@@ -1,0 +1,25 @@
+name = "nonnegativeModularForms"
+version = "0.1.0"
+defaultTargets = ["Section4", "Section4Audit", "Challenge", "Solution"]
+
+[leanOptions]
+autoImplicit = false
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "f0f4b227d8c5ac755232001fc0d94a440d399765"
+
+[[lean_lib]]
+name = "Section4"
+
+[[lean_lib]]
+name = "Section4Audit"
+
+[[lean_lib]]
+name = "Challenge"
+roots = ["Challenge"]
+
+[[lean_lib]]
+name = "Solution"
+roots = ["Solution"]

@@ -1,0 +1,36 @@
+name: Lean build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Build every Lean target
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          build: true
+
+  palomar-preflight:
+    if: github.event_name == 'workflow_dispatch'
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@a09f5c38ee58bf92c459b974b174ff4063ebea5f
+    with:
+      repository: ${{ github.repository }}
+      commit: ${{ github.sha }}
+      pipeline_commit: a09f5c38ee58bf92c459b974b174ff4063ebea5f
+      request_id: preflight001
+      mode: full
+      options: >-
+        {"comparator_config_path":"comparator.json","authorization_relationship":"I am a responsible author or maintainer"}
