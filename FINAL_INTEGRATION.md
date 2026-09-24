@@ -162,8 +162,8 @@ later coefficient equal to `-1`, contradicting the normalized cutoff theorem.
 
 The project is pinned by three checked-in files:
 
-- `lean-toolchain`: `leanprover/lean4:v4.34.0-rc1`;
-- `lakefile.toml`: mathlib commit `f0f4b227d8c5ac755232001fc0d94a440d399765`;
+- `lean-toolchain`: `leanprover/lean4:v4.35.0-rc2`;
+- `lakefile.toml`: mathlib commit `065356127b1dc0016f66b7283ce0ce2c4055aa55`;
 - `lake-manifest.json`: exact revisions of every transitive package.
 
 On Windows PowerShell, initial setup and ordinary verification are:
@@ -218,3 +218,16 @@ All checks were run on 24 August 2026 with
 
 The build emitted no compiler warnings or errors. Thus the production theorem chain and the
 separate API regression surface both verify under the checked-in pins.
+
+## Lean 4.35 compatibility verification
+
+On 24 September 2026, the project was advanced to Lean `v4.35.0-rc2` (compiler commit
+`11acb17ec6b07a8f9e9173e6845197929540936b`) and the matching Mathlib commit
+`065356127b1dc0016f66b7283ce0ce2c4055aa55`. No Lean source changes were required.
+
+After removing all compiled outputs, the full default build completed successfully with 3,507
+jobs. A fresh source scan found exactly the one intentional `sorry` in `Challenge.lean` and no
+`admit`, `native_decide`, `Lean.ofReduceBool`, project `axiom`, or `unsafe` declaration. A fresh
+`#print axioms` audit of
+`NonnegativeModularForms.exists_optimal_nonnegativity_cutoff` again reported exactly `propext`,
+`Classical.choice`, and `Quot.sound`.

@@ -32,7 +32,8 @@ No proof from Section 4 is included in Task 1.
 
 The first attempted pin was the stable pair Lean/mathlib `v4.32.1`. It compiled the q-expansion,
 dimension, and growth probes, but it had no module
-`Mathlib.NumberTheory.ModularForms.LFunction`. The project therefore uses the exact mathlib commit
+`Mathlib.NumberTheory.ModularForms.LFunction`. The initial project pin therefore used the exact
+mathlib commit
 `f0f4b227d8c5ac755232001fc0d94a440d399765`, whose declared Lean toolchain is
 `leanprover/lean4:v4.34.0-rc1`. The local compiler identifies itself by commit
 `3447a668783dbce1a8fdb97101dd067687b2b418`.
@@ -291,10 +292,10 @@ The production umbrella `Section4` does not import the Task 1 API probe or Task 
 separate default target `Section4Audit` imports both, so a full build continues to detect upstream
 API drift without exposing diagnostic declarations to production users.
 
-Final pins remain unchanged from Task 1:
+The current compatibility pins, advanced together on 2026-09-24, are:
 
-- Lean: `leanprover/lean4:v4.34.0-rc1`;
-- compiler commit: `3447a668783dbce1a8fdb97101dd067687b2b418`;
-- mathlib: `f0f4b227d8c5ac755232001fc0d94a440d399765`.
+- Lean: `leanprover/lean4:v4.35.0-rc2`;
+- compiler commit: `11acb17ec6b07a8f9e9173e6845197929540936b`;
+- mathlib: `065356127b1dc0016f66b7283ce0ce2c4055aa55`.
 
 The final clean-build result is recorded in `FINAL_INTEGRATION.md`.

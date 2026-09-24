@@ -47,13 +47,13 @@ import Section4Audit
 
 ## Exact pin
 
-- Lean toolchain: `leanprover/lean4:v4.34.0-rc1`
-- Lean compiler commit reported locally: `3447a668783dbce1a8fdb97101dd067687b2b418`
-- mathlib commit: `f0f4b227d8c5ac755232001fc0d94a440d399765`
+- Lean toolchain: `leanprover/lean4:v4.35.0-rc2`
+- Lean compiler commit reported locally: `11acb17ec6b07a8f9e9173e6845197929540936b`
+- mathlib commit: `065356127b1dc0016f66b7283ce0ce2c4055aa55`
 - All transitive package revisions are recorded in `lake-manifest.json`.
 
 The exact mathlib commit is intentional. The tested stable release, mathlib `v4.32.1`, did not
-contain `Mathlib.NumberTheory.ModularForms.LFunction`; this pinned post-release revision does.
+contain `Mathlib.NumberTheory.ModularForms.LFunction`; this pinned release-candidate revision does.
 
 ## Build on Windows
 

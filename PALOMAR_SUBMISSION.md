@@ -4,7 +4,9 @@
 
 This is the substantive formalization repository, published on the `main` branch as
 [`jenkins-byu/nonnegativity-cutoffs-lean`](https://github.com/jenkins-byu/nonnegativity-cutoffs-lean).
-It has not yet been submitted to Palomar.
+An earlier snapshot was submitted to Palomar. Its protected Lean verification passed, but the
+post-verification renderability stage did not complete because Palomar's dispatch infrastructure
+failed. The present Lean 4.35 compatibility update has not yet been published or resubmitted.
 
 The intended Palomar comparison consists of:
 
@@ -76,9 +78,10 @@ accurately records the review status as author-verified without claiming a separ
 
 ## Final local verification
 
-Task 6 completed the final verification available on this Windows host. On 2026-09-18, the local
-compiled outputs were removed with `lake.ps1 clean` and every default target was rebuilt from the
-pinned source and dependency graph. The cold build completed successfully with 3,449 jobs. Its
+The Lean 4.35 compatibility update completed the final verification available on this Windows
+host. On 2026-09-24, the local compiled outputs were removed with `lake.ps1 clean` and every
+default target was rebuilt from the
+pinned source and dependency graph. The cold build completed successfully with 3,507 jobs. Its
 only `sorry` warning came from the one deliberate placeholder in `Challenge.lean`; the production
 development, `Section4.NonnegativityBound`, the aggregate `Section4` target, and `Solution.lean`
 all compiled without proof-hole warnings.
@@ -115,8 +118,7 @@ requirements. It confirmed:
 - the conventional repository-root layout, with exactly one `lakefile.toml`, one root `LICENSE`,
   a `lake-manifest.json` ready for the initial commit, and the expected Challenge, Solution,
   Comparator, and metadata files;
-- Lean `v4.34.0-rc1`, above Palomar's current minimum and exactly matching the toolchain of the
-  pinned Mathlib revision;
+- Lean `v4.35.0-rc2`, exactly matching the toolchain of the pinned Mathlib revision;
 - public GitHub dependency URLs and full lowercase 40-character revisions for all nine Git
   packages, with the flattened manifest agreeing with Mathlib's own dependency pins;
 - a 51-line, 2,655-byte Challenge whose source dependency closure contains only Lean core and
