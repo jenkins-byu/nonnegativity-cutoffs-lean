@@ -6,6 +6,15 @@ This project formalizes the qualitative argument in Section 4 of Paul Jenkins an
 development was originally checked against arXiv:2507.17949v3; the relevant section is
 substantively unchanged in the published version.
 
+## Palomar record
+
+Version 1 of this result is registered as
+[`PALOMAR-2026-09-25-000011`](https://palomar-registry.org/entry?id=PALOMAR-2026-09-25-000011&version=1).
+The immutable record verifies repository commit
+[`b3217f0e8367a677426daa461f8f79953532d80c`](https://github.com/jenkins-byu/nonnegativity-cutoffs-lean/commit/b3217f0e8367a677426daa461f8f79953532d80c),
+including independent proof checking by Lean's kernel and NanoDa. Palomar's automated editorial
+review identified no problems.
+
 ## Main result
 
 For every weight `k ≥ 12` divisible by four, the formalization proves that there is a positive
@@ -90,13 +99,14 @@ Palomar Challenge and Solution modules. They can also be checked independently:
 `Challenge.lean` deliberately contains one `sorry`, as required for Palomar's advertised
 statement module. `Solution.lean` and the production development contain no `sorry`.
 
-## Palomar preparation files
+## Palomar files
 
 - `Challenge.lean`: the short Mathlib-only statement a mathematical reader should audit.
 - `Solution.lean`: the identically typed theorem proved from the production development.
 - `comparator.json`: the declaration and permitted-axiom configuration.
 - `formalization.yaml`: authorship, source, scope, fidelity, automation, and review metadata.
-- `PALOMAR_SUBMISSION.md`: local preparation status and semantic review checklist.
+- `PALOMAR_SUBMISSION.md`: registration record, verification history, and semantic review
+  checklist.
 - `LICENSE`: Apache License 2.0.
 - `CITATION.cff`: citation metadata for the formalization and published source.
 

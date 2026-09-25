@@ -1,12 +1,22 @@
-# Palomar submission preparation
+# Palomar registration record
 
 ## Repository status
 
 This is the substantive formalization repository, published on the `main` branch as
 [`jenkins-byu/nonnegativity-cutoffs-lean`](https://github.com/jenkins-byu/nonnegativity-cutoffs-lean).
-An earlier snapshot was submitted to Palomar. Its protected Lean verification passed, but the
-post-verification renderability stage did not complete because Palomar's dispatch infrastructure
-failed. The present Lean 4.35 compatibility update has not yet been published or resubmitted.
+Version 1 was registered on 2026-09-25 as
+[`PALOMAR-2026-09-25-000011`](https://palomar-registry.org/entry?id=PALOMAR-2026-09-25-000011&version=1).
+The immutable record fixes repository commit
+[`b3217f0e8367a677426daa461f8f79953532d80c`](https://github.com/jenkins-byu/nonnegativity-cutoffs-lean/commit/b3217f0e8367a677426daa461f8f79953532d80c)
+and `comparator.json`. Comparator, Lean's kernel, and NanoDa accepted the proof, and Palomar's
+automated editorial review identified no problems.
+
+The permanent supporting records are:
+
+- the [archived mechanical report](https://data.palomar-registry.org/evidence/PALOMAR-2026-09-25-000011-v1/804b87a8db30d0fa2a5c149706bfaa354e59dced36b53763bd77824f1a30ebdb/mechanical-report.json);
+- the [archived automated review](https://data.palomar-registry.org/evidence/PALOMAR-2026-09-25-000011-v1/804b87a8db30d0fa2a5c149706bfaa354e59dced36b53763bd77824f1a30ebdb/review.json);
+- the [source-preservation receipt](https://data.palomar-registry.org/evidence/PALOMAR-2026-09-25-000011-v1/804b87a8db30d0fa2a5c149706bfaa354e59dced36b53763bd77824f1a30ebdb/source-archive.json); and
+- Palomar's [preserved source copy](https://github.com/PalomarArchive/jenkins-byu--nonnegativity-cutoffs-lean--d3b79972c9e6/tree/b3217f0e8367a677426daa461f8f79953532d80c).
 
 The intended Palomar comparison consists of:
 
@@ -96,19 +106,19 @@ The independent post-build checks confirmed:
   three permitted axioms and NanoDa enabled; and
 - `formalization.yaml` passed the current official v0.4 schema again on 2026-09-21.
 
-The protected Palomar verification was not simulated locally and is not claimed here. This host
-has no installed Comparator, `lean4export`, NanoDa, or Landrun binaries, no Rust or Go toolchain
-with which to build them, and neither WSL nor Docker. Comparator documents a fake-Landrun
-development mode for non-Linux systems, but that would not reproduce Palomar's Linux Landlock
-boundary.
+The protected Palomar verification was not simulated locally. It was subsequently run by Palomar
+against the exact registered snapshot. The archived mechanical report records successful
+Comparator checking and successful replay by both Lean's kernel and NanoDa under Palomar's
+protected environment.
 
 After publication, the clean GitHub-hosted Linux build passed both on the initial push and in the
 [manually dispatched Task 8 run](https://github.com/jenkins-byu/nonnegativity-cutoffs-lean/actions/runs/35776538664).
 That run also successfully resolved Palomar's approved execution profile, but its protected
 verification job could not start because the selected Namespace-managed runner was unavailable
 to the calling repository. The predictive preflight is therefore not claimed. It is advisory
-rather than a registry submission; the authoritative protected Comparator/NanoDa/Landrun checks
-remain to be performed by Palomar's submission verification.
+rather than a registry submission. The authoritative protected verification was later completed
+successfully in Palomar's
+[registration run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/36028501198).
 
 ## Submission-readiness audit
 
@@ -139,5 +149,5 @@ requirements. It confirmed:
 Task 6 supplied the final local verification described above. Task 7 published the initial source
 snapshot. Task 8 confirmed the clean public Linux build and attempted the predictive Palomar
 preflight; the profile stage passed, but the protected verification job could not obtain its
-external runner. The authoritative Palomar Comparator/NanoDa/Landrun checks therefore remain for
-submission verification.
+external runner. Palomar subsequently completed the authoritative Comparator, NanoDa, and
+protected-environment checks and registered the result as `PALOMAR-2026-09-25-000011` version 1.
